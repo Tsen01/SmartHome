@@ -1,0 +1,1 @@
+databaseURL = "YOUR_FIREBASE_URL"

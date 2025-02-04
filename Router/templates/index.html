@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartHome</title>
+    <style>
+        body{
+            background-color: blanchedalmond;
+        }
+        button{
+            font-size: 34px;
+        }
+        div{
+            height: 100%;
+            width: 100%;
+        }
+        table{
+            width: 100%;
+        }
+        th{
+            font-size: 40px;
+            width: 30%;
+        }
+        .light-on {
+            width: 280px;
+        }
+        .light-off {
+            width: 280px;
+            opacity: 1;
+        }
+        #clock {
+            font-family: 'Share Tech Mono', monospace;
+            color: #394852;
+            text-align: right;
+            text-shadow: 0 0 5px rgba(10, 175, 230, 1), 0 0 5px rgba(10, 175, 230, 0);
+            padding-right: 10px;
+        }
+
+        .time {
+            letter-spacing: 0.05em;
+            font-size: 28px;
+        }
+
+        .timezone {
+            letter-spacing: 0.1em;
+            font-size: 28px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="../js/Clock.js"></script>
+    <script type="module" src="js/light.js"></script>
+</head>
+<body>
+    <div>
+        <table>
+            <tr>
+                <td style="text-align: left;">
+                    <a href="http://127.0.0.1:5001/"><img src="../img/Icon.png" alt="Home Icon"></a>
+                </td>
+                <td>
+                    <div id="clock" style="width: 95%;">
+                        <div id="time" class="time"></div>
+                        <div id="timezone" class="timezone"></div>
+                    </div>
+                </td>
+            </tr>
+        </table><br><br>
+    </div>
+
+    <div>
+        <table align="center">
+            <tr>
+                <th>客廳</th>
+                <th>玄關</th>
+            </tr>
+            <tr>
+                <td align="center">
+                    <!-- 根據 YLED 狀態顯示不同的圖片 -->
+                    {% if yled_status %}
+                        <img id="living-room-light" src="../img/light_on.png" class="light-on" alt="Living Room Light">
+                    {% else %}
+                        <img id="living-room-light" src="../img/light_off.png" class="light-off" alt="Living Room Light">
+                    {% endif %}
+                    <br><br>
+                    <!-- 控制客廳燈的開關 -->
+                    <form action="/control_light" method="post">
+                        <input type="hidden" name="light_name" value="YLED">
+                        <input type="hidden" name="status" value="true">
+                        <button type="submit">開燈</button>
+                    </form><br>
+                    <form action="/control_light" method="post">
+                        <input type="hidden" name="light_name" value="YLED">
+                        <input type="hidden" name="status" value="false">
+                        <button type="submit">關燈</button>
+                    </form>
+                </td>
+                <td align="center">
+                    <!-- 根據 RLED 狀態顯示不同的圖片 -->
+                    {% if rled_status %}
+                        <img id="bedroom-light" src="../img/light_on2.png" class="light-on" alt="Bedroom Light">
+                    {% else %}
+                        <img id="bedroom-light" src="../img/light_off2.png" class="light-off" alt="Bedroom Light">
+                    {% endif %}
+                    <br><br>
+                    <!-- 控制臥室燈的開關 -->
+                    <form action="/control_light" method="post">
+                        <input type="hidden" name="light_name" value="RLED">
+                        <input type="hidden" name="status" value="true">
+                        <button type="submit">開燈</button>
+                    </form><br>
+                    <form action="/control_light" method="post">
+                        <input type="hidden" name="light_name" value="RLED">
+                        <input type="hidden" name="status" value="false">
+                        <button type="submit">關燈</button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
