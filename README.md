@@ -1,4 +1,4 @@
-# SmartHome — Intelligent Home Lighting System
+# SmartHome
 
 In this project, we built a home automation system where an ESP32 microcontroller uses three types of sensors (pressure, ultrasonic, infrared temperature) to detect human activity and automatically provide lighting.  
 Beyond automatic control, users can monitor the light status from a web interface and control the lights remotely via Discord. When the lights are turned on while users are marked as "out", the Discord Bot automatically sends notification messages with an image of the triggered lights. 
