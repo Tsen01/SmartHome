@@ -34,7 +34,7 @@ Three types of sensors are used to detect environment and human activity:
 - Intuitive web interface for easy remote control.
 
 
-## 🧩 Technologies Used
+## Technologies Used
 | Layer | Function | Technology |
 |-------|---------|-----------|
 | Perception Layer | Detect human activity | ESP32 + Pressure Sensor + Ultrasonic Sensor + Infrared Temperature Sensor |
