@@ -44,6 +44,3 @@ Three types of sensors are used to detect environment and human activity:
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
-
-## Contact Information
-- **GitHub**: [LiYuTsen](https://github.com/Tsen01)
